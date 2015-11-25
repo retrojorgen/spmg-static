@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" ng-app="spillmagasinetFront">
+<head>
+  <meta name="robots" content="noindex">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="initial-scale=1.0; minimum-scale=1.0">
+  <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.js?v.0.1"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular-cookies.js?v.0.1"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular-route.js?v.0.1"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular-sanitize.js?v.0.1"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/locale/nb.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-moment/1.0.0-beta.2/angular-moment.min.js"></script>
+  <script src="http://underscorejs.org/underscore.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/TweenMax.min.js"></script>
+  <link href='https://fonts.googleapis.com/css?family=Titillium+Web:300,600,600italic,300italic' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="stylesheets/screen.css">
+  <title>SPMG - Spillmagasinet</title>
+</head>
+<body ng-app="spillmagasinetFront" ng-controller="contentController">
+  <div id="main-page-wrapper">
+    <header id="page-header">
+      <div id="logo-container">
+        <img src="img/background-glow.png" id="spmg-logo-glow">
+        <img src="img/spmg-logo.png" id="spmg-logo">
+        <img src="img/levert-av-nettavisen.png" id="spmg-logo-bottom">
+      </div>
+      <button id="burger-menu-button"></button>
+      <div id="page-header-background" style="background-image: url(img/header-image.jpg)"></div>
+    </header>
+
+    <div id="main-articles">
+      <article ng-repeat="story in stories | limitTo: 5">
+        <div class="article-background" ng-style="{'background-image': 'url(' + story.image + ')'}"></div>
+        <header class="article-info">
+          
+          <p class="category">{{story.category}}</p>
+          <h1 class="title">{{story.title}}</h1>
+          <p class="byline">{{story.author}}  - {{story.created | date: 'd. MMM yyyy'}}</p>
+        </header>
+      </article>
+      <div class="articles-list-controls">
+      <button class="show-more-button">Vis mer</button>
+      </div>
+    </div>
+    <div class="section-header-container">
+      <h1 class="title">Blogg</h1>
+    </div>
+    <div id="blogg-articles">
+      <button class="rollover-button left"></button>
+      <button class="rollover-button right"></button>
+      <div id="ultra-long-blog-container">
+        <article ng-repeat="story in fromBlogg | limitTo: 8">
+          <div class="article-image" ng-style="{'background-image': 'url(' + story.image + ')'}"></div>
+          <header class="article-info">
+            <p class="category">{{story.category}}</p>
+            <h1 class="title">{{story.title}}</h1>
+            <p class="byline">{{story.author}}  - {{story.created | date: 'd. MMM yyyy'}}</p>
+          </header>
+        </article>
+      </div>
+    </div>
+  </div>
+  <script src="app-and-controllers.js"></script> 
+</body>
+</html>

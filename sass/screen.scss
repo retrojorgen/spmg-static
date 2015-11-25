@@ -1,0 +1,320 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+@import "compass";
+
+* {
+	@include box-sizing(border-box);
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background-color: rgb(220,220,220);
+	font-family: "Titillium Web";
+}
+
+#main-page-wrapper {
+	max-width: 1000px;
+	background-color: white;
+	padding: 1px;
+	margin: 0 auto;
+
+}
+
+#page-header {
+	width: 100%;
+	height: 380px;
+	overflow: hidden;
+	position: relative;
+	margin-bottom: 28px;
+	#page-header-background {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		overflow: hidden;
+		background-image: cover;
+		z-index: 1;
+	}
+	#logo-container {
+		position: absolute;
+		left: 30px;
+		top: 0;
+		width: 261px;
+		background-color: black;
+		z-index: 2;
+		height: 100%;
+		#spmg-logo {
+			position: absolute;
+			left: 35px;
+    		top: 30px;
+		}
+		#spmg-logo-bottom {
+			position: absolute;
+    		left: 52px;
+    		bottom: 20px;
+		}
+	}
+	#burger-menu-button {
+		position: absolute;
+		right: 20px;
+		width: 52px;
+		height: 52px;
+		top: 0;
+		background-color: black;
+		background-image: url(../img/burger-menu.jpg);
+		border: 0;
+		padding: 0;
+		margin: 0;
+		z-index: 2;
+	}
+}
+
+#main-articles {
+	padding-bottom: 28px;
+	border-bottom: 1px solid rgb(220,220,220);
+	article {
+		display: inline-block;
+		overflow: hidden;
+		position: relative;
+		.title { 
+			font-weight: 300;
+			margin: 0;
+			color: #ffffff;
+			padding: 5px 10px 0 10px;
+			background-color: #000000;
+			position: relative;
+			line-height: 1.2;
+		}
+		.byline {
+			margin: 0;
+			color: #6d6d6d;
+			padding: 0 10px 5px 10px;
+			background-color: #000000;
+			position: relative;
+		}
+
+		.category {
+			background-color: #18e799;
+			padding: 5px 10px 5px 10px;
+			color: #000000;
+			display: inline-block;
+			min-width: 100px;
+			margin: 0;
+			position: relative;
+		}
+		.article-background {
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			background-size: cover;
+		}
+
+		.article-info {
+			position: absolute;
+			width: 80%;
+			left: 10%;
+			bottom: 20%;
+			.title {
+				font-size: 20px;
+			}
+			.byline {
+				font-size: 12px;
+			}
+
+		}
+	}
+	article:nth-child(1) {
+		height: 339px;
+		width: 60%;
+		.article-background {
+			border-right: 1px solid white;
+		}
+	}
+	article:nth-child(2) {
+		height: 339px;
+		width: 40%;
+	}
+	article:nth-child(1n+3) {
+		width: 33.3333%;
+		height: 250px;
+		.title {
+			font-size: 16px;
+		}
+		.article-info {
+			bottom: 10%;
+		}
+	}
+	article:nth-child(3n+3) {
+		.article-info {
+			left: 12%;
+		}
+		.article-background {
+			border-left: 26px solid white;
+			border-top: 22px solid white;
+			border-right: 14px solid white;
+		}
+	}
+	article:nth-child(3n+4) {
+		.article-background {
+			border-left: 14px solid white;
+			border-top: 26px solid white;
+			border-right: 14px solid white;
+		}
+	}
+	article:nth-child(3n+5) {
+		.article-info {
+			left: 8%;
+		}
+		.article-background {
+			border-left: 14px solid white;
+			border-top: 26px solid white;
+			border-right: 22px solid white;
+		}
+	}
+}
+
+.articles-list-controls {
+	padding: 28px;
+	text-align: center;
+	.show-more-button {
+		background-color: white;
+		border: 0;
+		color: #000000;
+		position: relative;
+		font-size: 20px;
+		text-transform: uppercase;
+
+		&:after {
+			position: absolute;
+			top: 100%;
+			left: 50%;
+			margin-left: -9.5px;
+			content: "";
+			width: 0;
+			height: 0;
+			border-style: solid;
+			border-width: 10px 9.5px 0 9.5px;
+			border-color: #000000 transparent transparent transparent;
+		}
+	}
+}
+
+
+.section-header-container {
+	text-align: center;
+	padding: 28px;
+	.title {
+		color: #ffffff;
+		font-size: 40px;
+		font-weight: bold;
+		position: relative;
+		background-color: black;
+		display: inline-block;
+		min-width: 40%;
+		text-transform: uppercase;
+		padding: 0px;
+		&:after {
+			position: absolute;
+			bottom: -14px;
+			left: 20%;
+			margin-left: -9.5px;
+			content: "";
+			width: 0;
+			height: 0;
+			border-style: solid;
+			border-width: 14px 13px 14px 0;
+			border-color: transparent #000000 transparent transparent;
+		}
+	}
+}
+
+.rollover-button {
+	position: absolute;
+	width: 36px;
+	height: 37px;
+	background-color: #000000;
+	background-size: cover;
+	top: 30%;
+	border: 0;
+	margin: 0;
+	padding: 0;
+	&.left {
+		left: 0;
+		background-image: url(../img/arrow-left.jpg);	
+	}
+	&.right {
+		right: 0;
+		background-image: url(../img/arrow-right.jpg);	
+	}
+	
+}
+
+#blogg-articles {
+	width: 100%;
+	overflow-x: hidden;
+	position: relative;
+	#ultra-long-blog-container {
+		width: 8000px;
+	}
+	article {
+		display: inline-block;
+		width: 250px;
+		overflow-x: hidden;
+		.article-image {
+			width: 100%;
+			height: 168px;
+			background-size: cover;
+		}
+		.article-info {
+			position: relative;
+			.category {
+				background-color: #18e799;
+				color: #000000;
+				position: absolute;
+				top: -32px;
+				left: 15px;
+				padding: 4px 10px;
+				margin: 0;
+			}
+			.title {
+				font-size: 20px;
+				color: #000000;
+				margin: 0;
+				padding:  4px 25px 4px 25px;
+			}
+			.byline {
+				font-size: 12px;
+				color: #6d6d6d;
+				padding:  0 25px 4px 25px;
+				margin: 0;
+			}
+		}
+	}
+	article:nth-child(4n+1) {
+		padding-left: 22px;
+		padding-right: 11px;
+	}
+	article:nth-child(4n+2) {
+		padding-left: 11px;
+		padding-right: 11px;
+	}
+	article:nth-child(4n+3) {
+		padding-left: 11px;
+		padding-right: 11px;
+	}
+	article:nth-child(4n+4) {
+		padding-left: 11px;
+		padding-right: 22px;
+	}
+}
