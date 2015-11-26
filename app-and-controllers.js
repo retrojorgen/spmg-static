@@ -6,7 +6,74 @@ spillmagasinetFront.run(function(amMoment) {
 
 
 spillmagasinetFront.controller('contentController', function ($scope, $http, $location, $window, $cookies, $routeParams) {
+  
+  $scope.storyLimiter = 5;
+  $scope.storyLimiterButtonVisbility = true;
+
+  $scope.bloggRollScrollPosition = 0;
+  $scope.reviewRollScrollPosition = 0;
+
+  $scope.increaseStoryLimiter = function () {
+    if($scope.storyLimiter + 3 > 20) {
+      $scope.storyLimiterButtonVisbility = false;
+    } else {
+      $scope.storyLimiter = $scope.storyLimiter + 3;
+      if($scope.storyLimiter >= 20) {
+        $scope.storyLimiterButtonVisbility = false;
+      }
+    }
+  }
+
+  $scope.scrollBloggRoll = function (scrollToggle) {
+    if(scrollToggle) {
+      if($scope.bloggRollScrollPosition >= 3) {
+
+      } else {
+        $scope.bloggRollScrollPosition++;
+      }
+    } else {
+      if($scope.bloggRollScrollPosition <= 0) {
+
+      } else {
+        $scope.bloggRollScrollPosition--;
+      }
+    }
+    TweenMax.to("#ultra-long-blog-container", 0.5, {x: ($scope.bloggRollScrollPosition*1000)*-1, ease: Back.easeIn});
+  }
+
+  $scope.scrollReviewRoll = function (scrollToggle) {
+    if(scrollToggle) {
+      if($scope.reviewRollScrollPosition >= 3) {
+
+      } else {
+        $scope.reviewRollScrollPosition++;
+      }
+    } else {
+      if($scope.reviewRollScrollPosition <= 0) {
+
+      } else {
+        $scope.reviewRollScrollPosition--;
+      }
+    }
+    TweenMax.to("#ultra-long-review-container", 0.5, {x: ($scope.reviewRollScrollPosition*1000)*-1, ease: Back.easeIn});
+  }
+
   $scope.stories = [
+    {category:"GTA", title: "Er GTA - San Andreas igjen på vei til PS3 og Xbox 360?", excerpt: "Specifically, dressing up as his greatest creation. The Legend of Zelda: Tri Force Heroes is available for Nintendo 3DS today, and one of the multiplayer ", image: "img/article-1-background.jpg", author: "Jørgen J", created: new Date()},
+    {category:"Destiny", title: "Hvor mye er du villig til å betale for en dans i Destiny?", excerpt: "Specifically, dressing up as his greatest creation. The Legend of Zelda: Tri Force Heroes is available for Nintendo 3DS today, and one of the multiplayer ", image: "img/article-2-background.jpg", author: "Jørgen J", created: new Date()},
+    {category:"Destiny", title: "National gaming archive would inspire the next GTA", excerpt: "Specifically, dressing up as his greatest creation. The Legend of Zelda: Tri Force Heroes is available for Nintendo 3DS today, and one of the multiplayer ", image: "img/article-3-background.jpg", author: "Jørgen J", created: new Date()},
+    {category:"Minecraft", title: "Dramatisk åpning på Minecraft- eventyret", excerpt: "Specifically, dressing up as his greatest creation. The Legend of Zelda: Tri Force Heroes is available for Nintendo 3DS today, and one of the multiplayer ", image: "img/article-4-background.jpg", author: "Jørgen J", created: new Date()},
+    {category:"Call Of Duty", title: "Black Ops III lar deg hoppe rett til slutten av historien", excerpt: "Specifically, dressing up as his greatest creation. The Legend of Zelda: Tri Force Heroes is available for Nintendo 3DS today, and one of the multiplayer ", image: "img/article-5-background.jpg", author: "Jørgen J", created: new Date()},
+    {category:"GTA", title: "Er GTA - San Andreas igjen på vei til PS3 og Xbox 360?", excerpt: "Specifically, dressing up as his greatest creation. The Legend of Zelda: Tri Force Heroes is available for Nintendo 3DS today, and one of the multiplayer ", image: "img/article-1-background.jpg", author: "Jørgen J", created: new Date()},
+    {category:"Destiny", title: "Hvor mye er du villig til å betale for en dans i Destiny?", excerpt: "Specifically, dressing up as his greatest creation. The Legend of Zelda: Tri Force Heroes is available for Nintendo 3DS today, and one of the multiplayer ", image: "img/article-2-background.jpg", author: "Jørgen J", created: new Date()},
+    {category:"Destiny", title: "National gaming archive would inspire the next GTA", excerpt: "Specifically, dressing up as his greatest creation. The Legend of Zelda: Tri Force Heroes is available for Nintendo 3DS today, and one of the multiplayer ", image: "img/article-3-background.jpg", author: "Jørgen J", created: new Date()},
+    {category:"Minecraft", title: "Dramatisk åpning på Minecraft- eventyret", excerpt: "Specifically, dressing up as his greatest creation. The Legend of Zelda: Tri Force Heroes is available for Nintendo 3DS today, and one of the multiplayer ", image: "img/article-4-background.jpg", author: "Jørgen J", created: new Date()},
+    {category:"Call Of Duty", title: "Black Ops III lar deg hoppe rett til slutten av historien", excerpt: "Specifically, dressing up as his greatest creation. The Legend of Zelda: Tri Force Heroes is available for Nintendo 3DS today, and one of the multiplayer ", image: "img/article-5-background.jpg", author: "Jørgen J", created: new Date()},
+    {category:"GTA", title: "Er GTA - San Andreas igjen på vei til PS3 og Xbox 360?", excerpt: "Specifically, dressing up as his greatest creation. The Legend of Zelda: Tri Force Heroes is available for Nintendo 3DS today, and one of the multiplayer ", image: "img/article-1-background.jpg", author: "Jørgen J", created: new Date()},
+    {category:"Destiny", title: "Hvor mye er du villig til å betale for en dans i Destiny?", excerpt: "Specifically, dressing up as his greatest creation. The Legend of Zelda: Tri Force Heroes is available for Nintendo 3DS today, and one of the multiplayer ", image: "img/article-2-background.jpg", author: "Jørgen J", created: new Date()},
+    {category:"Destiny", title: "National gaming archive would inspire the next GTA", excerpt: "Specifically, dressing up as his greatest creation. The Legend of Zelda: Tri Force Heroes is available for Nintendo 3DS today, and one of the multiplayer ", image: "img/article-3-background.jpg", author: "Jørgen J", created: new Date()},
+    {category:"Minecraft", title: "Dramatisk åpning på Minecraft- eventyret", excerpt: "Specifically, dressing up as his greatest creation. The Legend of Zelda: Tri Force Heroes is available for Nintendo 3DS today, and one of the multiplayer ", image: "img/article-4-background.jpg", author: "Jørgen J", created: new Date()},
+    {category:"Call Of Duty", title: "Black Ops III lar deg hoppe rett til slutten av historien", excerpt: "Specifically, dressing up as his greatest creation. The Legend of Zelda: Tri Force Heroes is available for Nintendo 3DS today, and one of the multiplayer ", image: "img/article-5-background.jpg", author: "Jørgen J", created: new Date()},
     {category:"GTA", title: "Er GTA - San Andreas igjen på vei til PS3 og Xbox 360?", excerpt: "Specifically, dressing up as his greatest creation. The Legend of Zelda: Tri Force Heroes is available for Nintendo 3DS today, and one of the multiplayer ", image: "img/article-1-background.jpg", author: "Jørgen J", created: new Date()},
     {category:"Destiny", title: "Hvor mye er du villig til å betale for en dans i Destiny?", excerpt: "Specifically, dressing up as his greatest creation. The Legend of Zelda: Tri Force Heroes is available for Nintendo 3DS today, and one of the multiplayer ", image: "img/article-2-background.jpg", author: "Jørgen J", created: new Date()},
     {category:"Destiny", title: "National gaming archive would inspire the next GTA", excerpt: "Specifically, dressing up as his greatest creation. The Legend of Zelda: Tri Force Heroes is available for Nintendo 3DS today, and one of the multiplayer ", image: "img/article-3-background.jpg", author: "Jørgen J", created: new Date()},
@@ -19,6 +86,18 @@ spillmagasinetFront.controller('contentController', function ($scope, $http, $lo
   ];
 
     $scope.fromBlogg = [
+    {category:"BATTLEFIELD 4", title: "Samus Aaran er tilbake!", image: "img/blogg-1-background.jpg", author: "Jørgen J", created: new Date()},
+    {category:"LEAGUE OF LEGENDS", title: "Samus Aaran er tilbake!", image: "img/blogg-2-background.jpg", author: "Jørgen J", created: new Date()},
+    {category:"SUPER MARIO", title: "Samus Aaran er tilbake!", image: "img/blogg-3-background.jpg", author: "Jørgen J", created: new Date()},
+    {category:"SONIC", title: "Samus Aaran er tilbake!", image: "img/blogg-4-background.jpg", author: "Jørgen J", created: new Date()},
+    {category:"BATTLEFIELD 4", title: "Samus Aaran er tilbake!", image: "img/blogg-1-background.jpg", author: "Jørgen J", created: new Date()},
+    {category:"LEAGUE OF LEGENDS", title: "Samus Aaran er tilbake!", image: "img/blogg-2-background.jpg", author: "Jørgen J", created: new Date()},
+    {category:"SUPER MARIO", title: "Samus Aaran er tilbake!", image: "img/blogg-3-background.jpg", author: "Jørgen J", created: new Date()},
+    {category:"SONIC", title: "Samus Aaran er tilbake!", image: "img/blogg-4-background.jpg", author: "Jørgen J", created: new Date()},
+    {category:"BATTLEFIELD 4", title: "Samus Aaran er tilbake!", image: "img/blogg-1-background.jpg", author: "Jørgen J", created: new Date()},
+    {category:"LEAGUE OF LEGENDS", title: "Samus Aaran er tilbake!", image: "img/blogg-2-background.jpg", author: "Jørgen J", created: new Date()},
+    {category:"SUPER MARIO", title: "Samus Aaran er tilbake!", image: "img/blogg-3-background.jpg", author: "Jørgen J", created: new Date()},
+    {category:"SONIC", title: "Samus Aaran er tilbake!", image: "img/blogg-4-background.jpg", author: "Jørgen J", created: new Date()},
     {category:"BATTLEFIELD 4", title: "Samus Aaran er tilbake!", image: "img/blogg-1-background.jpg", author: "Jørgen J", created: new Date()},
     {category:"LEAGUE OF LEGENDS", title: "Samus Aaran er tilbake!", image: "img/blogg-2-background.jpg", author: "Jørgen J", created: new Date()},
     {category:"SUPER MARIO", title: "Samus Aaran er tilbake!", image: "img/blogg-3-background.jpg", author: "Jørgen J", created: new Date()},
@@ -42,15 +121,22 @@ spillmagasinetFront.controller('contentController', function ($scope, $http, $lo
   ];
 
     $scope.reviews = [
-    {score:"4", votePanelToggle: false, reviewScoreTemp: false, userReviewScore: false, userScore:4, totalCount:40, userVotes:10, title: "Star Wars Battlefront", image: "img-user/SamusAran_1600.jpg", excerpt: "17-11-2015 - Playstation 4<br>17-11-2015 - Xbox One<br>17-11-2015 - Windows<br>"},
-    {score:"4", votePanelToggle: false, reviewScoreTemp: false, userReviewScore: false, userScore:4, totalCount:40, userVotes:10, title: "Star Wars Battlefront", image: "img-user/SamusAran_1600.jpg", excerpt: "17-11-2015 - Playstation 4<br>17-11-2015 - Xbox One<br>17-11-2015 - Windows<br>"},
-    {score:"4", votePanelToggle: false, reviewScoreTemp: false, userReviewScore: false, userScore:4, totalCount:40, userVotes:10, title: "Star Wars Battlefront", image: "img-user/SamusAran_1600.jpg", excerpt: "17-11-2015 - Playstation 4<br>17-11-2015 - Xbox One<br>17-11-2015 - Windows<br>"},
-    {score:"4", votePanelToggle: false, reviewScoreTemp: false, userReviewScore: false, userScore:4, totalCount:40, userVotes:10, title: "Star Wars Battlefront", image: "img-user/SamusAran_1600.jpg", excerpt: "17-11-2015 - Playstation 4<br>17-11-2015 - Xbox One<br>17-11-2015 - Windows<br>"},
-    {score:"4", votePanelToggle: false, reviewScoreTemp: false, userReviewScore: false, userScore:4, totalCount:40, userVotes:10, title: "Star Wars Battlefront", image: "img-user/SamusAran_1600.jpg", excerpt: "17-11-2015 - Playstation 4<br>17-11-2015 - Xbox One<br>17-11-2015 - Windows<br>"},
-    {score:"4", votePanelToggle: false, reviewScoreTemp: false, userReviewScore: false, userScore:4, totalCount:40, userVotes:10, title: "Star Wars Battlefront", image: "img-user/SamusAran_1600.jpg", excerpt: "17-11-2015 - Playstation 4<br>17-11-2015 - Xbox One<br>17-11-2015 - Windows<br>"},
-    {score:"4", votePanelToggle: false, reviewScoreTemp: false, userReviewScore: false, userScore:4, totalCount:40, userVotes:10, title: "Star Wars Battlefront", image: "img-user/SamusAran_1600.jpg", excerpt: "17-11-2015 - Playstation 4<br>17-11-2015 - Xbox One<br>17-11-2015 - Windows<br>"},
-    {score:"4", votePanelToggle: false, reviewScoreTemp: false, userReviewScore: false, userScore:4, totalCount:40, userVotes:10, title: "Star Wars Battlefront", image: "img-user/SamusAran_1600.jpg", excerpt: "17-11-2015 - Playstation 4<br>17-11-2015 - Xbox One<br>17-11-2015 - Windows<br>"},
-    {score:"4", votePanelToggle: false, reviewScoreTemp: false, userReviewScore: false, userScore:4, totalCount:40, userVotes:10, title: "Star Wars Battlefront", image: "img-user/SamusAran_1600.jpg", excerpt: "17-11-2015 - Playstation 4<br>17-11-2015 - Xbox One<br>17-11-2015 - Windows<br>"}
+      {score: 4, userscore: 2, title: "Star Wars: Battlefront (PS4)", url: "", image: "review-1-background.jpg", author: "Jørgen J", created: new Date()},
+      {score: 6, userscore: 3, title: "Super Mario 3D World (WII U)", url: "", image: "review-2-background.jpg", author: "Jørgen J", created: new Date()},
+      {score: 4, userscore: 2, title: "Colin Mcrea: DIRT (Xbox One)", url: "", image: "review-3-background.jpg", author: "Jørgen J", created: new Date()},
+      {score: 4, userscore: 2, title: "Pokemon - Emerald Version (GBA)", url: "", image: "review-4-background.jpg", author: "Jørgen J", created: new Date()},
+      {score: 4, userscore: 2, title: "Star Wars: Battlefront (PS4)", url: "", image: "review-1-background.jpg", author: "Jørgen J", created: new Date()},
+      {score: 6, userscore: 3, title: "Super Mario 3D World (WII U)", url: "", image: "review-2-background.jpg", author: "Jørgen J", created: new Date()},
+      {score: 4, userscore: 2, title: "Colin Mcrea: DIRT (Xbox One)", url: "", image: "review-3-background.jpg", author: "Jørgen J", created: new Date()},
+      {score: 4, userscore: 2, title: "Pokemon - Emerald Version (GBA)", url: "", image: "review-4-background.jpg", author: "Jørgen J", created: new Date()},
+      {score: 4, userscore: 2, title: "Star Wars: Battlefront (PS4)", url: "", image: "review-1-background.jpg", author: "Jørgen J", created: new Date()},
+      {score: 6, userscore: 3, title: "Super Mario 3D World (WII U)", url: "", image: "review-2-background.jpg", author: "Jørgen J", created: new Date()},
+      {score: 4, userscore: 2, title: "Colin Mcrea: DIRT (Xbox One)", url: "", image: "review-3-background.jpg", author: "Jørgen J", created: new Date()},
+      {score: 4, userscore: 2, title: "Pokemon - Emerald Version (GBA)", url: "", image: "review-4-background.jpg", author: "Jørgen J", created: new Date()},
+      {score: 4, userscore: 2, title: "Star Wars: Battlefront (PS4)", url: "", image: "review-1-background.jpg", author: "Jørgen J", created: new Date()},
+      {score: 6, userscore: 3, title: "Super Mario 3D World (WII U)", url: "", image: "review-2-background.jpg", author: "Jørgen J", created: new Date()},
+      {score: 4, userscore: 2, title: "Colin Mcrea: DIRT (Xbox One)", url: "", image: "review-3-background.jpg", author: "Jørgen J", created: new Date()},
+      {score: 4, userscore: 2, title: "Pokemon - Emerald Version (GBA)", url: "", image: "review-4-background.jpg", author: "Jørgen J", created: new Date()}
   ];
 
 

@@ -2,27 +2,32 @@
  * In this file you should write your main styles. (or centralize your imports)
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
-/* line 8, ../sass/screen.scss */
+@font-face {
+  font-family: "OswaldStencil-Bold";
+  src: url('../fonts/Oswald-Stencil.eot?1333166124');
+  src: url('../fonts/Oswald-Stencil.eot?&1333166124#iefix') format('embedded-opentype'), url('../fonts/Oswald-Stencil.woff?1333166124') format('woff'), url('../fonts/Oswald-Stencil.ttf?1333166124') format('truetype'), url('../fonts/Oswald-Stencil.svg?1333166124') format('svg');
+}
+/* line 14, ../sass/screen.scss */
 * {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
-/* line 12, ../sass/screen.scss */
+/* line 18, ../sass/screen.scss */
 html,
 body {
   margin: 0;
   padding: 0;
 }
 
-/* line 18, ../sass/screen.scss */
+/* line 25, ../sass/screen.scss */
 body {
   background-color: gainsboro;
   font-family: "Titillium Web";
 }
 
-/* line 23, ../sass/screen.scss */
+/* line 31, ../sass/screen.scss */
 #main-page-wrapper {
   max-width: 1000px;
   background-color: white;
@@ -30,7 +35,7 @@ body {
   margin: 0 auto;
 }
 
-/* line 31, ../sass/screen.scss */
+/* line 39, ../sass/screen.scss */
 #page-header {
   width: 100%;
   height: 380px;
@@ -38,7 +43,7 @@ body {
   position: relative;
   margin-bottom: 28px;
 }
-/* line 37, ../sass/screen.scss */
+/* line 45, ../sass/screen.scss */
 #page-header #page-header-background {
   position: absolute;
   width: 100%;
@@ -49,7 +54,7 @@ body {
   background-image: cover;
   z-index: 1;
 }
-/* line 47, ../sass/screen.scss */
+/* line 55, ../sass/screen.scss */
 #page-header #logo-container {
   position: absolute;
   left: 30px;
@@ -59,19 +64,19 @@ body {
   z-index: 2;
   height: 100%;
 }
-/* line 55, ../sass/screen.scss */
+/* line 63, ../sass/screen.scss */
 #page-header #logo-container #spmg-logo {
   position: absolute;
   left: 35px;
   top: 30px;
 }
-/* line 60, ../sass/screen.scss */
+/* line 68, ../sass/screen.scss */
 #page-header #logo-container #spmg-logo-bottom {
   position: absolute;
   left: 52px;
   bottom: 20px;
 }
-/* line 66, ../sass/screen.scss */
+/* line 74, ../sass/screen.scss */
 #page-header #burger-menu-button {
   position: absolute;
   right: 20px;
@@ -86,18 +91,18 @@ body {
   z-index: 2;
 }
 
-/* line 81, ../sass/screen.scss */
+/* line 89, ../sass/screen.scss */
 #main-articles {
   padding-bottom: 28px;
   border-bottom: 1px solid gainsboro;
 }
-/* line 84, ../sass/screen.scss */
+/* line 92, ../sass/screen.scss */
 #main-articles article {
   display: inline-block;
   overflow: hidden;
   position: relative;
 }
-/* line 88, ../sass/screen.scss */
+/* line 96, ../sass/screen.scss */
 #main-articles article .title {
   font-weight: 300;
   margin: 0;
@@ -107,7 +112,7 @@ body {
   position: relative;
   line-height: 1.2;
 }
-/* line 97, ../sass/screen.scss */
+/* line 105, ../sass/screen.scss */
 #main-articles article .byline {
   margin: 0;
   color: #6d6d6d;
@@ -115,7 +120,7 @@ body {
   background-color: #000000;
   position: relative;
 }
-/* line 105, ../sass/screen.scss */
+/* line 113, ../sass/screen.scss */
 #main-articles article .category {
   background-color: #18e799;
   padding: 5px 10px 5px 10px;
@@ -125,7 +130,7 @@ body {
   margin: 0;
   position: relative;
 }
-/* line 114, ../sass/screen.scss */
+/* line 122, ../sass/screen.scss */
 #main-articles article .article-background {
   position: absolute;
   left: 0;
@@ -134,81 +139,81 @@ body {
   height: 100%;
   background-size: cover;
 }
-/* line 123, ../sass/screen.scss */
+/* line 131, ../sass/screen.scss */
 #main-articles article .article-info {
   position: absolute;
   width: 80%;
   left: 10%;
   bottom: 20%;
 }
-/* line 128, ../sass/screen.scss */
+/* line 136, ../sass/screen.scss */
 #main-articles article .article-info .title {
   font-size: 20px;
 }
-/* line 131, ../sass/screen.scss */
+/* line 139, ../sass/screen.scss */
 #main-articles article .article-info .byline {
   font-size: 12px;
 }
-/* line 137, ../sass/screen.scss */
+/* line 145, ../sass/screen.scss */
 #main-articles article:nth-child(1) {
   height: 339px;
   width: 60%;
 }
-/* line 140, ../sass/screen.scss */
+/* line 148, ../sass/screen.scss */
 #main-articles article:nth-child(1) .article-background {
   border-right: 1px solid white;
 }
-/* line 144, ../sass/screen.scss */
+/* line 152, ../sass/screen.scss */
 #main-articles article:nth-child(2) {
   height: 339px;
   width: 40%;
 }
-/* line 148, ../sass/screen.scss */
+/* line 156, ../sass/screen.scss */
 #main-articles article:nth-child(1n+3) {
   width: 33.3333%;
   height: 250px;
 }
-/* line 151, ../sass/screen.scss */
+/* line 159, ../sass/screen.scss */
 #main-articles article:nth-child(1n+3) .title {
   font-size: 16px;
 }
-/* line 154, ../sass/screen.scss */
+/* line 162, ../sass/screen.scss */
 #main-articles article:nth-child(1n+3) .article-info {
   bottom: 10%;
 }
-/* line 159, ../sass/screen.scss */
+/* line 167, ../sass/screen.scss */
 #main-articles article:nth-child(3n+3) .article-info {
   left: 12%;
 }
-/* line 162, ../sass/screen.scss */
+/* line 170, ../sass/screen.scss */
 #main-articles article:nth-child(3n+3) .article-background {
   border-left: 26px solid white;
   border-top: 22px solid white;
   border-right: 14px solid white;
 }
-/* line 169, ../sass/screen.scss */
+/* line 177, ../sass/screen.scss */
 #main-articles article:nth-child(3n+4) .article-background {
   border-left: 14px solid white;
   border-top: 26px solid white;
   border-right: 14px solid white;
 }
-/* line 176, ../sass/screen.scss */
+/* line 184, ../sass/screen.scss */
 #main-articles article:nth-child(3n+5) .article-info {
   left: 8%;
 }
-/* line 179, ../sass/screen.scss */
+/* line 187, ../sass/screen.scss */
 #main-articles article:nth-child(3n+5) .article-background {
   border-left: 14px solid white;
   border-top: 26px solid white;
   border-right: 22px solid white;
 }
 
-/* line 187, ../sass/screen.scss */
+/* line 195, ../sass/screen.scss */
 .articles-list-controls {
   padding: 28px;
   text-align: center;
 }
-/* line 190, ../sass/screen.scss */
+/* line 198, ../sass/screen.scss */
 .articles-list-controls .show-more-button {
   background-color: white;
   border: 0;
@@ -217,7 +222,7 @@ body {
   font-size: 20px;
   text-transform: uppercase;
 }
-/* line 198, ../sass/screen.scss */
+/* line 206, ../sass/screen.scss */
 .articles-list-controls .show-more-button:after {
   position: absolute;
   top: 100%;
@@ -231,12 +236,174 @@ body {
   border-color: #000000 transparent transparent transparent;
 }
 
-/* line 214, ../sass/screen.scss */
+/* line 221, ../sass/screen.scss */
+.spmg {
+  font-family: "Anton";
+}
+
+/* line 225, ../sass/screen.scss */
+#spmg-video-container {
+  background-color: #f6f6f6;
+  padding: 22px;
+}
+/* line 228, ../sass/screen.scss */
+#spmg-video-container .section-header-container {
+  padding: 0;
+  margin-bottom: 28px;
+}
+/* line 232, ../sass/screen.scss */
+#spmg-video-container .spmg-video-player-container {
+  padding: 10px;
+  background-color: white;
+}
+
+/* line 239, ../sass/screen.scss */
+#reviews-container {
+  overflow-x: hidden;
+  position: relative;
+  background-color: black;
+}
+/* line 243, ../sass/screen.scss */
+#reviews-container #reviews-message {
+  background-color: black;
+  color: #18e799;
+  margin: 0;
+  padding: 4px;
+  text-align: center;
+  font-size: 19px;
+}
+/* line 251, ../sass/screen.scss */
+#reviews-container #ultra-long-review-container {
+  width: 4000px;
+}
+/* line 254, ../sass/screen.scss */
+#reviews-container article {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  width: 250px;
+  height: 450px;
+}
+/* line 257, ../sass/screen.scss */
+#reviews-container article:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(135deg, #292484, #dc4225);
+  opacity: 1;
+}
+/* line 267, ../sass/screen.scss */
+#reviews-container article .user-score-wrapper {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+  width: 100%;
+}
+/* line 273, ../sass/screen.scss */
+#reviews-container article .user-score-wrapper .user-score-text {
+  margin: 0;
+  padding: 0 22px 10px 22px;
+  color: white;
+}
+/* line 279, ../sass/screen.scss */
+#reviews-container article .user-score-container {
+  text-align: center;
+}
+/* line 281, ../sass/screen.scss */
+#reviews-container article .user-score-container .score {
+  font-size: 30px;
+  font-weight: 300;
+  text-align: center;
+  border: 2px solid white;
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  vertical-align: middle;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  color: white;
+}
+/* line 295, ../sass/screen.scss */
+#reviews-container article:nth-child(4n+1):before {
+  background-image: linear-gradient(135deg, #292484, #dc4225);
+}
+/* line 300, ../sass/screen.scss */
+#reviews-container article:nth-child(4n+2):before {
+  background-image: linear-gradient(135deg, #002f4b, #417711);
+}
+/* line 305, ../sass/screen.scss */
+#reviews-container article:nth-child(4n+3):before {
+  background-image: linear-gradient(135deg, #417711, #dc4225);
+}
+/* line 310, ../sass/screen.scss */
+#reviews-container article:nth-child(4n+4):before {
+  background-image: linear-gradient(135deg, #292484, #a83279);
+}
+/* line 314, ../sass/screen.scss */
+#reviews-container article .article-image {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  opacity: 0.2;
+}
+/* line 325, ../sass/screen.scss */
+#reviews-container article .article-info {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+/* line 330, ../sass/screen.scss */
+#reviews-container article .article-info .score-container {
+  padding: 22px;
+  text-align: center;
+}
+/* line 333, ../sass/screen.scss */
+#reviews-container article .article-info .score-container .score {
+  margin-top: 22px;
+  font-size: 70px;
+  font-weight: 300;
+  text-align: center;
+  border: 2px solid white;
+  background-color: #00e997;
+  display: inline-block;
+  width: 114px;
+  height: 114px;
+  vertical-align: middle;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  color: white;
+}
+/* line 349, ../sass/screen.scss */
+#reviews-container article .article-info .title {
+  color: white;
+  font-size: 28px;
+  padding: 10px 22px 0px 22px;
+  margin: 0;
+  text-align: center;
+}
+/* line 356, ../sass/screen.scss */
+#reviews-container article .article-info .byline {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  padding: 0 22px 0 22px;
+}
+
+/* line 370, ../sass/screen.scss */
 .section-header-container {
   text-align: center;
   padding: 28px;
 }
-/* line 217, ../sass/screen.scss */
+/* line 373, ../sass/screen.scss */
 .section-header-container .title {
   color: #ffffff;
   font-size: 40px;
@@ -247,8 +414,22 @@ body {
   min-width: 40%;
   text-transform: uppercase;
   padding: 0px;
+  font-family: "OswaldStencil-Bold";
 }
-/* line 227, ../sass/screen.scss */
+/* line 384, ../sass/screen.scss */
+.section-header-container .title .spmg {
+  font-family: "Anton";
+  font-size: 45px;
+}
+/* line 388, ../sass/screen.scss */
+.section-header-container .title.turq {
+  background-color: #00e997;
+}
+/* line 390, ../sass/screen.scss */
+.section-header-container .title.turq:after {
+  border-color: transparent #00e997 transparent transparent;
+}
+/* line 394, ../sass/screen.scss */
 .section-header-container .title:after {
   position: absolute;
   bottom: -14px;
@@ -262,7 +443,7 @@ body {
   border-color: transparent #000000 transparent transparent;
 }
 
-/* line 242, ../sass/screen.scss */
+/* line 409, ../sass/screen.scss */
 .rollover-button {
   position: absolute;
   width: 36px;
@@ -273,45 +454,57 @@ body {
   border: 0;
   margin: 0;
   padding: 0;
+  z-index: 4;
 }
-/* line 252, ../sass/screen.scss */
+/* line 420, ../sass/screen.scss */
 .rollover-button.left {
   left: 0;
   background-image: url(../img/arrow-left.jpg);
 }
-/* line 256, ../sass/screen.scss */
+/* line 423, ../sass/screen.scss */
+.rollover-button.left.turq {
+  top: 24%;
+  background-image: url(../img/arrow-left-turq.jpg);
+}
+/* line 428, ../sass/screen.scss */
 .rollover-button.right {
   right: 0;
   background-image: url(../img/arrow-right.jpg);
 }
+/* line 431, ../sass/screen.scss */
+.rollover-button.right.turq {
+  top: 24%;
+  background-image: url(../img/arrow-right-turq.jpg);
+}
 
-/* line 263, ../sass/screen.scss */
+/* line 439, ../sass/screen.scss */
 #blogg-articles {
   width: 100%;
   overflow-x: hidden;
   position: relative;
+  margin-bottom: 28px;
 }
-/* line 267, ../sass/screen.scss */
+/* line 444, ../sass/screen.scss */
 #blogg-articles #ultra-long-blog-container {
-  width: 8000px;
+  width: 4000px;
 }
-/* line 270, ../sass/screen.scss */
+/* line 447, ../sass/screen.scss */
 #blogg-articles article {
   display: inline-block;
   width: 250px;
   overflow-x: hidden;
 }
-/* line 274, ../sass/screen.scss */
+/* line 451, ../sass/screen.scss */
 #blogg-articles article .article-image {
   width: 100%;
   height: 168px;
   background-size: cover;
 }
-/* line 279, ../sass/screen.scss */
+/* line 456, ../sass/screen.scss */
 #blogg-articles article .article-info {
   position: relative;
 }
-/* line 281, ../sass/screen.scss */
+/* line 458, ../sass/screen.scss */
 #blogg-articles article .article-info .category {
   background-color: #18e799;
   color: #000000;
@@ -321,36 +514,36 @@ body {
   padding: 4px 10px;
   margin: 0;
 }
-/* line 290, ../sass/screen.scss */
+/* line 467, ../sass/screen.scss */
 #blogg-articles article .article-info .title {
   font-size: 20px;
   color: #000000;
   margin: 0;
   padding: 4px 25px 4px 25px;
 }
-/* line 296, ../sass/screen.scss */
+/* line 473, ../sass/screen.scss */
 #blogg-articles article .article-info .byline {
   font-size: 12px;
   color: #6d6d6d;
   padding: 0 25px 4px 25px;
   margin: 0;
 }
-/* line 304, ../sass/screen.scss */
+/* line 481, ../sass/screen.scss */
 #blogg-articles article:nth-child(4n+1) {
   padding-left: 22px;
   padding-right: 11px;
 }
-/* line 308, ../sass/screen.scss */
+/* line 485, ../sass/screen.scss */
 #blogg-articles article:nth-child(4n+2) {
   padding-left: 11px;
   padding-right: 11px;
 }
-/* line 312, ../sass/screen.scss */
+/* line 489, ../sass/screen.scss */
 #blogg-articles article:nth-child(4n+3) {
   padding-left: 11px;
   padding-right: 11px;
 }
-/* line 316, ../sass/screen.scss */
+/* line 493, ../sass/screen.scss */
 #blogg-articles article:nth-child(4n+4) {
   padding-left: 11px;
   padding-right: 22px;

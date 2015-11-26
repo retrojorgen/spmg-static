@@ -5,6 +5,12 @@
 
 @import "compass";
 
+@include font-face('OswaldStencil-Bold', font-files(
+'Oswald-Stencil.woff', woff,
+'Oswald-Stencil.ttf', ttf,
+'Oswald-Stencil.svg', svg),
+'Oswald-Stencil.eot');
+
 * {
 	@include box-sizing(border-box);
 }
@@ -15,10 +21,12 @@ body {
 	padding: 0;
 }
 
+
 body {
 	background-color: rgb(220,220,220);
 	font-family: "Titillium Web";
 }
+
 
 #main-page-wrapper {
 	max-width: 1000px;
@@ -210,6 +218,154 @@ body {
 	}
 }
 
+.spmg {
+	font-family: "Anton";
+}
+
+#spmg-video-container {
+	background-color: #f6f6f6;
+	padding: 22px;
+	.section-header-container {
+		padding: 0;
+		margin-bottom: 28px;
+	}
+	.spmg-video-player-container {
+		padding: 10px;
+		background-color: white;
+	}
+}
+
+
+#reviews-container {
+	overflow-x: hidden;
+	position: relative;
+	background-color: black;
+	#reviews-message {
+		background-color: black;
+		color: #18e799;
+		margin: 0;
+		padding: 4px;
+		text-align: center;
+		font-size: 19px;
+	}
+	#ultra-long-review-container {
+		width: 4000px;
+	}
+	article {
+		position: relative;
+		overflow: hidden;
+		&:before {
+			content: "";
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			background-image: linear-gradient(135deg,#292484,#dc4225);
+			opacity: 1;
+		}
+		.user-score-wrapper {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			text-align: center;
+			width: 100%;
+			.user-score-text {
+				margin: 0;
+				padding: 0 22px 10px 22px;
+				color: white;
+			}
+		}
+		.user-score-container {
+			text-align: center;
+			.score {
+				font-size: 30px;
+				font-weight: 300;
+				text-align: center;
+				border: 2px solid white;
+				display: inline-block;
+				width: 50px;
+				height: 50px;
+				vertical-align: middle;
+				@include border-radius(50%);
+				color: white;
+			}
+		}
+		&:nth-child(4n+1) {
+			&:before {
+				background-image: linear-gradient(135deg,#292484,#dc4225);
+			}
+		}
+		&:nth-child(4n+2) {
+			&:before {
+				background-image: linear-gradient(135deg,#002f4b,#417711);
+			}
+		}
+		&:nth-child(4n+3) {
+			&:before {
+				background-image: linear-gradient(135deg,#417711,#dc4225);
+			}
+		}
+		&:nth-child(4n+4) {
+			&:before {
+				background-image: linear-gradient(135deg,#292484,#a83279);
+			}
+		}
+		.article-image {
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			background-size: cover;
+			opacity: 0.2;
+
+		}
+
+		.article-info {
+			position: absolute;
+			top: 0;
+			left: 0;
+
+			.score-container {
+				padding: 22px;
+				text-align: center;
+				.score {
+					margin-top: 22px;
+					font-size: 70px;
+					font-weight: 300;
+					text-align: center;
+					border: 2px solid white;
+					background-color: #00e997;
+					display: inline-block;
+					width: 114px;
+					height: 114px;
+					vertical-align: middle;
+					@include border-radius(50%);
+					color: white;
+				}
+			}
+
+			.title {
+				color: white;
+				font-size: 28px;
+				padding: 10px 22px 0px 22px;
+				margin: 0;
+				text-align: center;
+			}
+			.byline {
+				margin: 0;
+				color: rgba(white, 0.8);
+
+				text-align: center;
+				padding: 0 22px 0 22px;
+			}
+		}
+		display: inline-block;
+		width: 250px;
+		height: 450px;
+	}
+}
 
 .section-header-container {
 	text-align: center;
@@ -224,6 +380,17 @@ body {
 		min-width: 40%;
 		text-transform: uppercase;
 		padding: 0px;
+		font-family: "OswaldStencil-Bold";
+		.spmg {
+			font-family: "Anton";
+			font-size: 45px;
+		}
+		&.turq {
+			background-color: #00e997;
+			&:after {
+				border-color: transparent #00e997 transparent transparent;
+			}
+		}
 		&:after {
 			position: absolute;
 			bottom: -14px;
@@ -249,13 +416,22 @@ body {
 	border: 0;
 	margin: 0;
 	padding: 0;
+	z-index: 4;
 	&.left {
 		left: 0;
-		background-image: url(../img/arrow-left.jpg);	
+		background-image: url(../img/arrow-left.jpg);
+		&.turq {
+			top: 24%;
+			background-image: url(../img/arrow-left-turq.jpg);
+		}
 	}
 	&.right {
 		right: 0;
-		background-image: url(../img/arrow-right.jpg);	
+		background-image: url(../img/arrow-right.jpg);
+		&.turq {
+			top: 24%;
+			background-image: url(../img/arrow-right-turq.jpg);
+		}
 	}
 	
 }
@@ -264,8 +440,9 @@ body {
 	width: 100%;
 	overflow-x: hidden;
 	position: relative;
+	margin-bottom: 28px;
 	#ultra-long-blog-container {
-		width: 8000px;
+		width: 4000px;
 	}
 	article {
 		display: inline-block;
