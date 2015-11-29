@@ -1,11 +1,7 @@
-var spillmagasinetFront = angular.module('spillmagasinetFront', ['ngSanitize', 'ngCookies', 'ngRoute', 'angularMoment']);
-
-spillmagasinetFront.run(function(amMoment) {
-  amMoment.changeLocale('nb');
-});
+var spillmagasinetFront = angular.module('spillmagasinetFront', []);
 
 
-spillmagasinetFront.controller('contentController', function ($scope, $http, $location, $window, $cookies, $routeParams) {
+spillmagasinetFront.controller('contentController', function ($scope, $http, $location, $window) {
   
   $scope.storyLimiter = 5;
   $scope.storyLimiterButtonVisbility = true;
@@ -205,22 +201,6 @@ spillmagasinetFront.controller('contentController', function ($scope, $http, $lo
         lowRes: stream.preview.small,
         highRes: stream.preview.large,
         url: stream.channel.url
-      });
-    });    
-  });
-
-  
-	
-  $http.jsonp("https://api.instagram.com/v1/tags/gaming/media/recent/?count=8&client_id=046b08d202094c94ab1fbae69dd0776c&callback=JSON_CALLBACK")
-  .success(function(data) {
-    _.each(data.data, function(image) {
-      console.log(image.images.low_resolution.url);
-      $scope.instagramPhotos.push({
-        user: image.user.username,
-        lowRes: image.images.low_resolution.url,
-        highRes: image.images.high_resolution,
-        link: image.link,
-        caption: image.caption.text
       });
     });
   });

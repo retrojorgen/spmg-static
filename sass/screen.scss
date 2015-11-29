@@ -27,6 +27,10 @@ body {
 	font-family: "Titillium Web";
 }
 
+button {
+	outline: none;
+	cursor: pointer;
+}
 
 #main-page-wrapper {
 	max-width: 1000px;
@@ -202,7 +206,7 @@ body {
 		position: relative;
 		font-size: 20px;
 		text-transform: uppercase;
-
+		cursor:pointer;
 		&:after {
 			position: absolute;
 			top: 100%;
@@ -417,6 +421,7 @@ body {
 	margin: 0;
 	padding: 0;
 	z-index: 4;
+	cursor: pointer;
 	&.left {
 		left: 0;
 		background-image: url(../img/arrow-left.jpg);
@@ -493,5 +498,40 @@ body {
 	article:nth-child(4n+4) {
 		padding-left: 11px;
 		padding-right: 22px;
+	}
+}
+
+#weeks-gamer-and-podcast {
+	#weeks-gamer,
+	#podcasts {
+		vertical-align: top;
+		display: inline-block;
+		width: 50%;
+		padding: 0 11px 0 22px;
+		.section-header-container {
+			.title {
+				padding: 0 30px;
+			}
+		}
+		.article-image-container {
+			overflow: hidden;
+			max-height: 250px;
+			img {
+				max-width: 100%;
+			}
+		}
+		.article-info {
+			border: 0;
+			.title {
+				margin: 0;
+				padding: 10px 0 0 0;
+			}
+			.byline {
+				margin: 0;
+			}
+		}
+	}
+	#podcasts {
+		padding: 0 22px 0 11px;
 	}
 }
