@@ -22,14 +22,23 @@ body {
 }
 
 
+h1 {
+	line-height: 20px;
+}
+
 body {
 	background-color: rgb(220,220,220);
 	font-family: "Titillium Web";
+	background-image: url(../img/background.jpg);
 }
 
 button {
-	outline: none;
+	outline: none;	
 	cursor: pointer;
+}
+
+a {
+	text-decoration: none;
 }
 
 #main-page-wrapper {
@@ -53,7 +62,7 @@ button {
 		top: 0;
 		left: 0;
 		overflow: hidden;
-		background-image: cover;
+		background-size: cover;
 		z-index: 1;
 	}
 	#logo-container {
@@ -200,7 +209,7 @@ button {
 	padding: 28px;
 	text-align: center;
 	.show-more-button {
-		background-color: white;
+		background-color: transparent;
 		border: 0;
 		color: #000000;
 		position: relative;
@@ -383,7 +392,7 @@ button {
 		display: inline-block;
 		min-width: 40%;
 		text-transform: uppercase;
-		padding: 0px;
+		padding: 22px 23px;
 		font-family: "OswaldStencil-Bold";
 		.spmg {
 			font-family: "Anton";
@@ -391,6 +400,7 @@ button {
 		}
 		&.turq {
 			background-color: #00e997;
+			color: #000000;
 			&:after {
 				border-color: transparent #00e997 transparent transparent;
 			}
@@ -441,11 +451,18 @@ button {
 	
 }
 
+.byline {
+	&::first-letter {
+		text-transform: uppercase;
+	}
+}
+
 #blogg-articles {
 	width: 100%;
 	overflow-x: hidden;
 	position: relative;
 	margin-bottom: 28px;
+	min-height: 310px;
 	#ultra-long-blog-container {
 		width: 4000px;
 	}
@@ -453,6 +470,7 @@ button {
 		display: inline-block;
 		width: 250px;
 		overflow-x: hidden;
+		vertical-align: top;
 		.article-image {
 			width: 100%;
 			height: 168px;
@@ -510,7 +528,6 @@ button {
 		padding: 0 11px 0 22px;
 		.section-header-container {
 			.title {
-				padding: 0 30px;
 			}
 		}
 		.article-image-container {
@@ -533,5 +550,70 @@ button {
 	}
 	#podcasts {
 		padding: 0 22px 0 11px;
+	}
+}
+
+#streaming-header {
+	position: relative;
+	&:before {
+	    content: "";
+	    position: absolute;
+	    height: 50%;
+	    width: 100%;
+	    background-color: #eefaf7;
+	    left: 0;
+	    top: 50%;
+	}
+}
+
+#streaming {
+	background-color: #eefaf7;
+	article {
+		a {
+			color: black;
+		}
+		display: inline-block;
+		width: 33.33%;
+		vertical-align: top;
+		margin-bottom: 22px;
+		.article-image {
+			max-height: 250px;
+			img {
+				max-width: 100%;
+			}
+		}
+		&:nth-child(3n+1) {
+			padding: 0 11px 0 22px;
+		}
+		&:nth-child(3n+2) {
+			padding: 0 11px 0 11px;
+		}
+		&:nth-child(3n+3) {
+			padding: 0 22px 0 11px;
+		}
+		header {
+			h1 {
+				margin: 0;
+				font-size: 16px;
+				.category {
+				    background-color: #18e799;
+				    padding: 5px 10px 5px 10px;
+				    color: #000000;
+				    display: inline-block;
+				    min-width: 100px;
+				    margin: 0;
+				    position: relative;
+				}
+				.viewers {
+					padding: 5px 10px 5px 10px;
+					float: right;	
+				}
+			}
+			h2 {
+				margin: 0;
+				padding: 5px 10px 5px 10px;
+				font-size: 16px;
+			}
+		}
 	}
 }

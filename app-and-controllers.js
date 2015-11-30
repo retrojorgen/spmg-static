@@ -1,13 +1,49 @@
-var spillmagasinetFront = angular.module('spillmagasinetFront', []);
+var spillmagasinetFront = angular.module('spillmagasinetFront', ['ui.calendar', 'ui.bootstrap']);
 
+
+spillmagasinetFront.run(function ($window) {
+
+});
 
 spillmagasinetFront.controller('contentController', function ($scope, $http, $location, $window) {
+
+  $scope.pageCoverNumber = Math.floor((Math.random() * 5) + 1);
   
   $scope.storyLimiter = 5;
   $scope.storyLimiterButtonVisbility = true;
 
+  $scope.streamLimiter = 6;
+  $scope.streamLimiterButtonVisbility = true;
+
   $scope.bloggRollScrollPosition = 0;
   $scope.reviewRollScrollPosition = 0;
+
+
+  $scope.uiConfig = {
+    calendar:{
+      height: 450,
+      editable: true,
+      header:{
+        left: 'title',
+        center: '',
+        right: 'today prev,next'
+      },
+      dayNames: ["Mandag", "Tirsdag", "Onsdag", "Torsdag", "Fredag", "Lørdag", "Søndag"],
+      dayNamesShort: ["Man", "Tir", "Ons", "Tor", "Fre", "Lør", "Søn"]
+      /**
+      eventClick: $scope.alertOnEventClick,
+      eventDrop: $scope.alertOnDrop,
+      eventResize: $scope.alertOnResize,
+      eventRender: $scope.eventRender
+      **/
+    }
+  };
+
+  $scope.eventSource = {
+    url: "http://www.google.com/calendar/feeds/usa__en%40holiday.calendar.google.com/public/basic",
+    className: 'gcal-event',           // an option!
+    currentTimezone: 'America/Chicago' // an option!
+  };
 
   $scope.increaseStoryLimiter = function () {
     if($scope.storyLimiter + 3 > 20) {
@@ -16,6 +52,17 @@ spillmagasinetFront.controller('contentController', function ($scope, $http, $lo
       $scope.storyLimiter = $scope.storyLimiter + 3;
       if($scope.storyLimiter >= 20) {
         $scope.storyLimiterButtonVisbility = false;
+      }
+    }
+  }
+
+  $scope.increaseStreamLimiter = function () {
+    if($scope.streamLimiter + 3 > 20) {
+      $scope.streamLimiterButtonVisbility = false;
+    } else {
+      $scope.streamLimiter = $scope.streamLimiter + 3;
+      if($scope.streamLimiter >= 20) {
+        $scope.streamLimiterButtonVisbility = false;
       }
     }
   }
@@ -54,54 +101,47 @@ spillmagasinetFront.controller('contentController', function ($scope, $http, $lo
     TweenMax.to("#ultra-long-review-container", 0.5, {x: ($scope.reviewRollScrollPosition*1000)*-1, ease: Back.easeIn});
   }
 
-  $scope.stories = [
-    {category:"GTA", title: "Er GTA - San Andreas igjen på vei til PS3 og Xbox 360?", excerpt: "Specifically, dressing up as his greatest creation. The Legend of Zelda: Tri Force Heroes is available for Nintendo 3DS today, and one of the multiplayer ", image: "img/article-1-background.jpg", author: "Jørgen J", created: new Date()},
-    {category:"Destiny", title: "Hvor mye er du villig til å betale for en dans i Destiny?", excerpt: "Specifically, dressing up as his greatest creation. The Legend of Zelda: Tri Force Heroes is available for Nintendo 3DS today, and one of the multiplayer ", image: "img/article-2-background.jpg", author: "Jørgen J", created: new Date()},
-    {category:"Destiny", title: "National gaming archive would inspire the next GTA", excerpt: "Specifically, dressing up as his greatest creation. The Legend of Zelda: Tri Force Heroes is available for Nintendo 3DS today, and one of the multiplayer ", image: "img/article-3-background.jpg", author: "Jørgen J", created: new Date()},
-    {category:"Minecraft", title: "Dramatisk åpning på Minecraft- eventyret", excerpt: "Specifically, dressing up as his greatest creation. The Legend of Zelda: Tri Force Heroes is available for Nintendo 3DS today, and one of the multiplayer ", image: "img/article-4-background.jpg", author: "Jørgen J", created: new Date()},
-    {category:"Call Of Duty", title: "Black Ops III lar deg hoppe rett til slutten av historien", excerpt: "Specifically, dressing up as his greatest creation. The Legend of Zelda: Tri Force Heroes is available for Nintendo 3DS today, and one of the multiplayer ", image: "img/article-5-background.jpg", author: "Jørgen J", created: new Date()},
-    {category:"GTA", title: "Er GTA - San Andreas igjen på vei til PS3 og Xbox 360?", excerpt: "Specifically, dressing up as his greatest creation. The Legend of Zelda: Tri Force Heroes is available for Nintendo 3DS today, and one of the multiplayer ", image: "img/article-1-background.jpg", author: "Jørgen J", created: new Date()},
-    {category:"Destiny", title: "Hvor mye er du villig til å betale for en dans i Destiny?", excerpt: "Specifically, dressing up as his greatest creation. The Legend of Zelda: Tri Force Heroes is available for Nintendo 3DS today, and one of the multiplayer ", image: "img/article-2-background.jpg", author: "Jørgen J", created: new Date()},
-    {category:"Destiny", title: "National gaming archive would inspire the next GTA", excerpt: "Specifically, dressing up as his greatest creation. The Legend of Zelda: Tri Force Heroes is available for Nintendo 3DS today, and one of the multiplayer ", image: "img/article-3-background.jpg", author: "Jørgen J", created: new Date()},
-    {category:"Minecraft", title: "Dramatisk åpning på Minecraft- eventyret", excerpt: "Specifically, dressing up as his greatest creation. The Legend of Zelda: Tri Force Heroes is available for Nintendo 3DS today, and one of the multiplayer ", image: "img/article-4-background.jpg", author: "Jørgen J", created: new Date()},
-    {category:"Call Of Duty", title: "Black Ops III lar deg hoppe rett til slutten av historien", excerpt: "Specifically, dressing up as his greatest creation. The Legend of Zelda: Tri Force Heroes is available for Nintendo 3DS today, and one of the multiplayer ", image: "img/article-5-background.jpg", author: "Jørgen J", created: new Date()},
-    {category:"GTA", title: "Er GTA - San Andreas igjen på vei til PS3 og Xbox 360?", excerpt: "Specifically, dressing up as his greatest creation. The Legend of Zelda: Tri Force Heroes is available for Nintendo 3DS today, and one of the multiplayer ", image: "img/article-1-background.jpg", author: "Jørgen J", created: new Date()},
-    {category:"Destiny", title: "Hvor mye er du villig til å betale for en dans i Destiny?", excerpt: "Specifically, dressing up as his greatest creation. The Legend of Zelda: Tri Force Heroes is available for Nintendo 3DS today, and one of the multiplayer ", image: "img/article-2-background.jpg", author: "Jørgen J", created: new Date()},
-    {category:"Destiny", title: "National gaming archive would inspire the next GTA", excerpt: "Specifically, dressing up as his greatest creation. The Legend of Zelda: Tri Force Heroes is available for Nintendo 3DS today, and one of the multiplayer ", image: "img/article-3-background.jpg", author: "Jørgen J", created: new Date()},
-    {category:"Minecraft", title: "Dramatisk åpning på Minecraft- eventyret", excerpt: "Specifically, dressing up as his greatest creation. The Legend of Zelda: Tri Force Heroes is available for Nintendo 3DS today, and one of the multiplayer ", image: "img/article-4-background.jpg", author: "Jørgen J", created: new Date()},
-    {category:"Call Of Duty", title: "Black Ops III lar deg hoppe rett til slutten av historien", excerpt: "Specifically, dressing up as his greatest creation. The Legend of Zelda: Tri Force Heroes is available for Nintendo 3DS today, and one of the multiplayer ", image: "img/article-5-background.jpg", author: "Jørgen J", created: new Date()},
-    {category:"GTA", title: "Er GTA - San Andreas igjen på vei til PS3 og Xbox 360?", excerpt: "Specifically, dressing up as his greatest creation. The Legend of Zelda: Tri Force Heroes is available for Nintendo 3DS today, and one of the multiplayer ", image: "img/article-1-background.jpg", author: "Jørgen J", created: new Date()},
-    {category:"Destiny", title: "Hvor mye er du villig til å betale for en dans i Destiny?", excerpt: "Specifically, dressing up as his greatest creation. The Legend of Zelda: Tri Force Heroes is available for Nintendo 3DS today, and one of the multiplayer ", image: "img/article-2-background.jpg", author: "Jørgen J", created: new Date()},
-    {category:"Destiny", title: "National gaming archive would inspire the next GTA", excerpt: "Specifically, dressing up as his greatest creation. The Legend of Zelda: Tri Force Heroes is available for Nintendo 3DS today, and one of the multiplayer ", image: "img/article-3-background.jpg", author: "Jørgen J", created: new Date()},
-    {category:"Minecraft", title: "Dramatisk åpning på Minecraft- eventyret", excerpt: "Specifically, dressing up as his greatest creation. The Legend of Zelda: Tri Force Heroes is available for Nintendo 3DS today, and one of the multiplayer ", image: "img/article-4-background.jpg", author: "Jørgen J", created: new Date()},
-    {category:"Call Of Duty", title: "Black Ops III lar deg hoppe rett til slutten av historien", excerpt: "Specifically, dressing up as his greatest creation. The Legend of Zelda: Tri Force Heroes is available for Nintendo 3DS today, and one of the multiplayer ", image: "img/article-5-background.jpg", author: "Jørgen J", created: new Date()}
-  ];
+  $http.get("Spillmagasinet-partnere-static.json")
+  .success(function(data) {
+    _.each(data.responseData.feed.entries, function(entry) {
+      entry.publishedDate = new Date(entry.publishedDate);
+      if(!entry.author) {
+        entry.author = entry.link.replace("http://","").split(".")[0];
+        entry.enclosure.url = entry.enclosure.url.replace('http://i.blogg.no/140/100/','');
+      }
+    })
+    $scope.stories = data.responseData.feed.entries;
+    console.log($scope.stories);
+  });
+
+  $http.get("Spillmagasinet-bloggere-static.json")
+  .success(function(data) {
+    _.each(data.responseData.feed.entries, function(entry) {
+      entry.publishedDate = new Date(entry.publishedDate);
+      if(!entry.author) {
+        entry.author = entry.link.replace("http://","").split(".")[0];
+        entry.enclosure.url = entry.enclosure.url.replace('http://i.blogg.no/140/100/','');
+      }
+    })
+    $scope.fromBlogg = data.responseData.feed.entries;
+    console.log($scope.fromBlogg);
+  });
+
+  $http.get("Spillmagasinet-podcasts-static.json")
+  .success(function(data) {
+    _.each(data.responseData.feed.entries, function(entry) {
+      entry.publishedDate = new Date(entry.publishedDate);
+      if(!entry.author) {
+        entry.author = entry.link.replace("http://","").split(".")[0];
+        entry.enclosure.url = entry.enclosure.url.replace('http://i.blogg.no/140/100/','');
+      }
+    })
+    $scope.podcasts = data.responseData.feed.entries;
+    console.log($scope.podcasts);
+  });
 
   $scope.thisWeeksGamer = [{
     category:"ukens-gamer", title: "Uke 1: Noobwork", excerpt: "Navn: Joachim Haraldsen<br>Alder: 22 (født 29. desember 1992)<br>Bosted: Nittedal<br><br>Denne ukens gamer har over 80 000 følgere på youtube, og lever – tro det eller ei – faktisk av å spille spill.", image: "img-user/SamusAran_1600.jpg"}
-  ];
-
-    $scope.fromBlogg = [
-    {category:"BATTLEFIELD 4", title: "Samus Aaran er tilbake!", image: "img/blogg-1-background.jpg", author: "Jørgen J", created: new Date()},
-    {category:"LEAGUE OF LEGENDS", title: "Samus Aaran er tilbake!", image: "img/blogg-2-background.jpg", author: "Jørgen J", created: new Date()},
-    {category:"SUPER MARIO", title: "Samus Aaran er tilbake!", image: "img/blogg-3-background.jpg", author: "Jørgen J", created: new Date()},
-    {category:"SONIC", title: "Samus Aaran er tilbake!", image: "img/blogg-4-background.jpg", author: "Jørgen J", created: new Date()},
-    {category:"BATTLEFIELD 4", title: "Samus Aaran er tilbake!", image: "img/blogg-1-background.jpg", author: "Jørgen J", created: new Date()},
-    {category:"LEAGUE OF LEGENDS", title: "Samus Aaran er tilbake!", image: "img/blogg-2-background.jpg", author: "Jørgen J", created: new Date()},
-    {category:"SUPER MARIO", title: "Samus Aaran er tilbake!", image: "img/blogg-3-background.jpg", author: "Jørgen J", created: new Date()},
-    {category:"SONIC", title: "Samus Aaran er tilbake!", image: "img/blogg-4-background.jpg", author: "Jørgen J", created: new Date()},
-    {category:"BATTLEFIELD 4", title: "Samus Aaran er tilbake!", image: "img/blogg-1-background.jpg", author: "Jørgen J", created: new Date()},
-    {category:"LEAGUE OF LEGENDS", title: "Samus Aaran er tilbake!", image: "img/blogg-2-background.jpg", author: "Jørgen J", created: new Date()},
-    {category:"SUPER MARIO", title: "Samus Aaran er tilbake!", image: "img/blogg-3-background.jpg", author: "Jørgen J", created: new Date()},
-    {category:"SONIC", title: "Samus Aaran er tilbake!", image: "img/blogg-4-background.jpg", author: "Jørgen J", created: new Date()},
-    {category:"BATTLEFIELD 4", title: "Samus Aaran er tilbake!", image: "img/blogg-1-background.jpg", author: "Jørgen J", created: new Date()},
-    {category:"LEAGUE OF LEGENDS", title: "Samus Aaran er tilbake!", image: "img/blogg-2-background.jpg", author: "Jørgen J", created: new Date()},
-    {category:"SUPER MARIO", title: "Samus Aaran er tilbake!", image: "img/blogg-3-background.jpg", author: "Jørgen J", created: new Date()},
-    {category:"SONIC", title: "Samus Aaran er tilbake!", image: "img/blogg-4-background.jpg", author: "Jørgen J", created: new Date()},
-    {category:"BATTLEFIELD 4", title: "Samus Aaran er tilbake!", image: "img/blogg-1-background.jpg", author: "Jørgen J", created: new Date()},
-    {category:"LEAGUE OF LEGENDS", title: "Samus Aaran er tilbake!", image: "img/blogg-2-background.jpg", author: "Jørgen J", created: new Date()},
-    {category:"SUPER MARIO", title: "Samus Aaran er tilbake!", image: "img/blogg-3-background.jpg", author: "Jørgen J", created: new Date()},
-    {category:"SONIC", title: "Samus Aaran er tilbake!", image: "img/blogg-4-background.jpg", author: "Jørgen J", created: new Date()}
   ];
 
   $scope.calendar = [
@@ -138,45 +178,6 @@ spillmagasinetFront.controller('contentController', function ($scope, $http, $lo
 
   $scope.norwegianStreams = [];
 
-  $scope.instagramPhotos = [];
-  $scope.reviewConfig = {
-    totalReviewsLength : ($scope.reviews.length-4) * 250,
-    reviewCounter : 0,
-    leftButtonVisibility: false,
-    rightButtonVisibility: true
-  };
-
-  $scope.moveReviewRight = function () {
-    $scope.reviewConfig.reviewCounter += 250;
-    TweenMax.to("#review-articles", 0.5, {x: ($scope.reviewConfig.reviewCounter*-1), ease: Back.easeIn, onComplete: 
-      function () {
-
-    }
-    });
-    if(($scope.reviewConfig.reviewCounter+250) > $scope.reviewConfig.totalReviewsLength) {
-      $scope.reviewConfig.rightButtonVisibility = false;
-    }
-    if(($scope.reviewConfig.reviewCounter) > 0) {
-      $scope.reviewConfig.leftButtonVisibility = true;
-    }
-
-  };
-
-  $scope.moveReviewLeft = function () {
-    $scope.reviewConfig.reviewCounter -= 250;
-    TweenMax.to("#review-articles", 0.5, {x: ($scope.reviewConfig.reviewCounter*-1), ease: Back.easeIn, onComplete: 
-      function () {
-
-    }
-    });
-    if(($scope.reviewConfig.reviewCounter+250) <= $scope.reviewConfig.totalReviewsLength) {
-      $scope.reviewConfig.rightButtonVisibility = true;
-    }
-
-    if(($scope.reviewConfig.reviewCounter-250) <= 0) {
-      $scope.reviewConfig.leftButtonVisibility = false;
-    }
-  };
 
   $scope.setUserScore = function (score, review) {
     review.userReviewScore = score;
@@ -191,7 +192,6 @@ spillmagasinetFront.controller('contentController', function ($scope, $http, $lo
   //$http.jsonp("https://api.twitch.tv/kraken/streams?channel=herpaderpus,turtles_head,nubstep_rs,taketv,destiny,followgrubby&callback=JSON_CALLBACK")
   $http.jsonp("https://api.twitch.tv/kraken/streams?broadcaster_language=no&callback=JSON_CALLBACK")
   .success(function(data) {
-    console.log(data);
     _.each(data.streams, function (stream) {
       $scope.norwegianStreams.push({
         game: stream.game,
@@ -203,5 +203,6 @@ spillmagasinetFront.controller('contentController', function ($scope, $http, $lo
         url: stream.channel.url
       });
     });
+    console.log($scope.norwegianStreams);
   });
 });

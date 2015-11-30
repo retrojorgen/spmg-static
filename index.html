@@ -4,17 +4,57 @@
   <meta name="robots" content="noindex">
   <meta charset="utf-8" />
   <meta name="viewport" content="initial-scale=1.0; minimum-scale=1.0">
+
   <script src="js/jquery-2.1.4.js"></script>
-  
   <script src="js/angular.js"></script>
   <script src="js/TweenMax.min.js"></script>
   <script src="js/underscore.js"></script>
+
+  <script src="bower_components/moment/moment.js"></script>
+  <script src="bower_components/fullcalendar/dist/fullcalendar.js"></script>
+  <script src="bower_components/fullcalendar/dist/gcal.js"></script>
+  <script src="js/ui-bootstrap-tpls-0.13.0.js"></script>
+  <script src="js/angular-ui-calendar.js"></script>
+  <script type="text/javascript" src="http://fusion.nettavisen.no/script.js?v.0.1"></script>
+
+  
+
+  <link rel="stylesheet" href="bower_components/bootstrap-css/css/bootstrap.css" />
+  <link rel="stylesheet" href="bower_components/fullcalendar/dist/fullcalendar.css">
   <link href='stylesheets/google-fonts-1.css' rel='stylesheet' type='text/css'>
   <link href='stylesheets/google-fonts-3.css' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" type="text/css" href="stylesheets/screen.css">
+
   <title>SPMG - Spillmagasinet</title>
+
+  <script type="text/javascript">
+  window.Fusion.adServer = "fusion.nettavisen.no";
+  window.Fusion.mediaZone = "mna.spillmagasinet.spillmagasinet";
+  window.Fusion.layout = "mna_top";
+  window.Fusion.loadAds();
+  </script>
+
 </head>
 <body ng-app="spillmagasinetFront" ng-controller="contentController">
+
+  <div id="toppbanner_ad" style="margin:0px auto; width:1000px;">
+    <script>
+      window.Fusion.space("toppbanner");
+    </script>
+  </div>
+
+  <div id="left_ad" style="position: absolute; top: 0; left: 50%; margin-left: -800px">
+    <script>
+      window.Fusion.space("left_2");
+    </script>
+  </div>
+
+  <div id="right_ad" style="position: absolute; top: 0; left: 50%; margin-left: 500px">
+    <script>
+      window.Fusion.space("right_2");
+    </script>
+  </div>
+
   <div id="main-page-wrapper">
     <header id="page-header">
       <div id="logo-container">
@@ -23,18 +63,20 @@
         <img src="img/levert-av-nettavisen.png" id="spmg-logo-bottom">
       </div>
       <button id="burger-menu-button"></button>
-      <div id="page-header-background" style="background-image: url(img/header-image.jpg)"></div>
+      <div id="page-header-background" ng-style="{'background-image': 'url(img-roll/' + pageCoverNumber + '.jpg)'}"></div>
     </header>
 
     <div id="main-articles">
       <article ng-repeat="story in stories | limitTo: storyLimiter">
-        <div class="article-background" ng-style="{'background-image': 'url(' + story.image + ')'}"></div>
+        <div class="article-background" ng-style="{'background-image': 'url(' + story.enclosure.url + ')'}"></div>
+        <a ng-href="{{story.link}}">
         <header class="article-info">
           
-          <p class="category">{{story.category}}</p>
-          <h1 class="title">{{story.title}}</h1>
-          <p class="byline">{{story.author}}  - {{story.created | date: 'd. MMM yyyy'}}</p>
+          <p class="category" ng-if="story.categories.length">{{story.categories[0].title}}</p>
+          <h1 class="title">{{story.title}}</h1></a>
+          <p class="byline">{{story.author}}  - {{story.publishedDate | date: 'd. MMM yyyy'}}</p>
         </header>
+      </a>
       </article>
       <div class="articles-list-controls">
       <button class="show-more-button" ng-click="increaseStoryLimiter()" ng-show="storyLimiterButtonVisbility">Vis mer</button>
@@ -48,11 +90,11 @@
       <button class="rollover-button right" ng-click="scrollBloggRoll(true)"></button>
       <div id="ultra-long-blog-container">
         <article ng-repeat="story in fromBlogg | limitTo: 16">
-          <div class="article-image" ng-style="{'background-image': 'url(' + story.image + ')'}"></div>
+          <div class="article-image" ng-style="{'background-image': 'url(' + story.enclosure.url + ')'}"></div>
           <header class="article-info">
-            <p class="category">{{story.category}}</p>
+            <p class="category" ng-if="story.categories.length">{{story.categories[0].title}}</p>
             <h1 class="title">{{story.title}}</h1>
-            <p class="byline">{{story.author}}  - {{story.created | date: 'd. MMM yyyy'}}</p>
+            <p class="byline">{{story.author}}  - {{story.publishedDate | date: 'd. MMM yyyy'}}</p>
           </header>
         </article>
       </div>
@@ -102,15 +144,43 @@
         <div class="section-header-container">
           <h1 class="title">Gaming-podcasts</h1>
         </div>
-        <div class="article-image-container"><img src="img/blogg-3-background.jpg"></div>
+        <div class="article-image-container"><img ng-src="{{podcasts[0].enclosure.url}}"></div>
         <div class="article-info">
-          <h2 class="title">Vi kårer de ti beste plattformspillene på Super Nintendo</h2>
-          <p class="byline">Jørgen J.  - 24. jan</p>
-          <p><a href="blabla">Hør hele episoden her..</a></p>
+          <h2 class="title">{{podcasts[0].title}}</h2>
+          <p class="byline">{{podcasts[0].author}} - {{podcasts[0].publishedDate | date: 'd. MMM yyyy'}}</p>
+          <p><a ng-href="{{podcasts[0].link}}">Hør hele episoden her..</a></p>
         </div>
       </article>
     </div>
+    <div id="calendar">
+      <div ui-calendar="{{uiConfig.calendar}}" class="span8 calendar" ng-model="eventSource"></div>
+      <div id="video-container"></div>
+    </div>
+    <div id="streaming-header" class="section-header-container">
+      <h1 class="title">Norske livestreams</h1>
+    </div>
+    <div id="streaming">
+      <article ng-repeat="stream in norwegianStreams | limitTo: streamLimiter">
+        <a ng-href="{{stream.url}}">
+          <div class="article-image">
+            <img ng-src="{{stream.highRes}}">
+          </div>
+          <header>
+            <h1 class="main-info"><span class="category">{{stream.game}}</span>
+            <span class="viewers">{{stream.viewers}}</span></h1>
+            <h2 class="user">{{stream.display_name}}</h2>
+          </header>
+        </a>
+      </article>
+      <div class="articles-list-controls">
+      <button class="show-more-button" ng-click="increaseStreamLimiter()" ng-show="streamLimiterButtonVisbility">Vis mer</button>
+      </div>
+    </div>
   </div>
-  <script src="app-and-controllers.js"></script> 
+  <script src="app-and-controllers.js"></script>
+  <script>
+
+      window.Fusion.loadAds();
+  </script>
 </body>
 </html>
